@@ -13,14 +13,14 @@ public class SlotGacorGame extends AppCompatActivity {
     private ImageView reel1, reel2, reel3;
     private Button spinButton;
     private TextView resultText, coinText, betText;
-    private int playerCoins = 100000;
-    private int currentBet = 2000;
-    private int[] betOptions = {2000, 5000, 10000};
+    private int playerCoins = 500000;
+    private int currentBet = 500;
+    private int[] betOptions = {500, 2000, 5000, 10000};
     private int betIndex = 0;
 
     private int[] images = {R.drawable.ic_slot1, R.drawable.ic_slot2, R.drawable.ic_slot3, R.drawable.ic_slot4, R.drawable.ic_slot5};
 
-    private int[] rewards = {5, 25, 50, 100, 250}; // Multiplier for each slot image
+    private int[] rewards = {-25, 25, 50, 100, 250}; // Multiplier for each slot image
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ public class SlotGacorGame extends AppCompatActivity {
         updateUI();
 
         Button betButton = findViewById(R.id.betButton);
-
         betButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +51,24 @@ public class SlotGacorGame extends AppCompatActivity {
                 spinReels();
             }
         });
+    }
+
+    // Corrected calculateReward method
+    private void calculateReward(int multiplier) {
+        int reward = currentBet * multiplier;
+        playerCoins += reward; // Update playerCoins based on the reward
+        updateUI(); // This will update both the coin and bet TextViews
+        updateResultText(reward);
+    }
+
+    private void updateResultText(int reward) {
+        if (reward > 0) {
+            resultText.setText("You won " + reward + " coins!");
+        } else if (reward < 0) {
+            resultText.setText("You lost " + (-reward) + " coins!");
+        } else {
+            resultText.setText("No change in coins.");
+        }
     }
 
     private void cycleBet() {
@@ -78,16 +95,13 @@ public class SlotGacorGame extends AppCompatActivity {
         reel3.setImageResource(images[reel3Result]);
 
         if (reel1Result == reel2Result && reel2Result == reel3Result) {
-            int reward = currentBet * rewards[reel1Result];
-            playerCoins += reward;
-            resultText.setText("Jackpot! You won " + reward + " coins!");
-        } else {
-            resultText.setText("Try again!");
+            calculateReward(rewards[reel1Result]);  // Using calculateReward here to handle the reward
         }
 
         updateUI();
     }
 
+    // Update the UI with the latest coins and bet values
     private void updateUI() {
         coinText.setText("Coins: " + playerCoins);
         betText.setText("Bet: " + currentBet);
