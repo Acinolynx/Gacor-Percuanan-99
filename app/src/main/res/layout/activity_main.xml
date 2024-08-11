@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/zeus"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/coinText"
+        android:layout_width="300dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        android:text="Coins: 1000000"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/betText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/black"
+        android:text="Bet: 2000"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Reels -->
+        <ImageView
+            android:id="@+id/reel1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_slot" />
+
+        <ImageView
+            android:id="@+id/reel2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_slot" />
+
+        <ImageView
+            android:id="@+id/reel3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_slot" />
+    </LinearLayout>
+
+    <!-- Bet Button -->
+    <Button
+        android:id="@+id/betButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/black"
+        android:text="Change Bet"
+        android:textStyle="bold"
+        android:textColor="@color/white" />
+
+    <!-- Spin Button -->
+    <Button
+        android:id="@+id/spinButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"
+        android:text="Spin"
+        android:textStyle="bold"
+        android:textColor="@color/white" />
+
+    <!-- Result TextView -->
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:shadowColor="#000000"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="5"
+        android:text=""
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="21dp"
+        android:textStyle="bold" />
+
+</LinearLayout>
